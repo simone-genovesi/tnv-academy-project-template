@@ -77,12 +77,12 @@ public class UserService {
         return user;
     }
 
-    public String loginUser(Credentials credentials)
+    public User loginUser(Credentials credentials)
             throws UserNotFoundException, WrongPasswordLoginException {
         User user = userDAO.findByUsernameEquals(credentials.getUsername());
         if (user == null) throw new UserNotFoundException(credentials.getUsername());
         if (!credentials.getPassword().equals(user.getPassword()))
             throw new WrongPasswordLoginException(credentials.getPassword());
-        return "Login effettuato";
+        return user;
     }
 }

@@ -111,6 +111,7 @@ public class UserController {
         }
     }
 
+    @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody Credentials credentials) {
         try {
