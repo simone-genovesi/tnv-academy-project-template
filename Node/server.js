@@ -10,13 +10,13 @@ app.use(express.json());
 app.use(cors());
 app.use(routes);
 
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server attivo su porta ${PORT}`));
 
 try {
   await db.authenticate();
-  console.log("Database connection has been established successfully");
+  console.log("La connessione al database è stata stabilita con successo");
 } catch (error) {
-  console.error("Unable to connect to the database: ", error);
+  console.error("Impossibile connettersi al database: ", error);
 }
 
 db.sync();
