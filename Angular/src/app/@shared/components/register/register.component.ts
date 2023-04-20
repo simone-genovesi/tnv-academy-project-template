@@ -8,7 +8,7 @@ import { AuthService } from "src/app/@core/services/auth.service";
   templateUrl: "./register.component.html",
   styleUrls: ["./register.component.scss"],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit {  
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -18,9 +18,16 @@ export class RegisterComponent implements OnInit {
   }
 
   register(form: NgForm) {
+    console.log("register component.ts", form.value);
     form.control.markAllAsTouched();
     if (form.valid) {
-      this.authService.register(form.value);
+      this.authService.register(form.value).subscribe({
+        next: (response) => {
+          localStorage.setItem("user", JSON.stringify(response));
+          this.router.navigateByUrl("/");
+        },
+        error: () => alert("Registrazione fallita"),
+      });
     }
   }
 }

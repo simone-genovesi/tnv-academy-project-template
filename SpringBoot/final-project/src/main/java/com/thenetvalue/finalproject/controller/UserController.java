@@ -25,6 +25,7 @@ public class UserController {
     //CRUD Operations
 
     //add User
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         try {

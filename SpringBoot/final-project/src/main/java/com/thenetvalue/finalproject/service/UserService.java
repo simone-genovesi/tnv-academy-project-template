@@ -23,7 +23,8 @@ public class UserService {
             throws UserAlreadyExistsException {
         User existsUser = userDAO.findByUsernameEquals(user.getUsername());
         if (existsUser != null) throw new UserAlreadyExistsException(user.getUsername());
-        return userDAO.save(user);
+        userDAO.save(user);
+        return user;
     }
 
     public User getUser(int userId)

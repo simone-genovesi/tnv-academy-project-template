@@ -8,24 +8,28 @@ import { LoginDTO, RegisterDTO, User } from "src/app/models/user";
   providedIn: "root",
 })
 export class AuthService {
-  springBootUrl = 'http://localhost:8080';
+  springBootUrl = 'http://localhost:8080/users';
 
   constructor(private router: Router, private http: HttpClient) {}
 
 
 
   login(loginData: LoginDTO): Observable<User> {
-    return this.http.post<User>(`${this.springBootUrl}/users/login`, loginData).pipe(
+    return this.http.post<User>(`${this.springBootUrl}/login`, loginData).pipe(
       tap((user: User) => {
         localStorage.setItem("user", JSON.stringify(user));
-        this.router.navigateByUrl("/rankings");
+        this.router.navigateByUrl("/welcome");
       })
     )
   }
 
-  register(registerData: RegisterDTO) {
-    // TODO Chiamare il servizio per la registrazione e redirigere l'utente alla root per il login
-    this.router.navigateByUrl("/");
+  register(registerData: RegisterDTO): Observable<User> {
+    return this.http.post<User>(`${this.springBootUrl}/`, registerData).pipe(
+      tap((user: User) => {
+        localStorage.setItem("user", JSON.stringify(user));
+        this.router.navigateByUrl("/");
+      })
+    )
   }
 
   logout() {
