@@ -15,6 +15,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RankingsComponent } from './components/rankings/rankings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './@shared/modules/angular-material/angular-material.module';
+import { GiocaComponent } from './components/gioca/gioca.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { AngularMaterialModule } from './@shared/modules/angular-material/angula
     NavbarComponent,
     WelcomeComponent,
     ProfileComponent,
-    RankingsComponent
+    RankingsComponent,
+    GiocaComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import { AngularMaterialModule } from './@shared/modules/angular-material/angula
     NgbModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
