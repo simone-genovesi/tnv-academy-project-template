@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     if (form.valid) {
       this.authService.register(form.value).subscribe({
         next: () => {
-          this.router.navigateByUrl("/login");
+          this.router.navigateByUrl("/registration-success");
         },
         error: () => alert("Registrazione fallita"),
       });

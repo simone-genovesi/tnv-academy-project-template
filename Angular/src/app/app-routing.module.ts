@@ -9,6 +9,7 @@ import { ProfileComponent } from "./components/profile/profile.component";
 import { RankingsComponent } from "./components/rankings/rankings.component";
 import { GiocaComponent } from "./components/gioca/gioca.component";
 import { FavoritesComponent } from "./components/favorites/favorites.component";
+import { RegistrationSuccessComponent } from "./@shared/components/registration-success/registration-success.component";
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
     path: "login",
     component: LoginComponent,
   },
-  
+  { path: "registration-success", 
+    component: RegistrationSuccessComponent },
   {
     path: "register",
     component: RegisterComponent,

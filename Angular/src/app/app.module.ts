@@ -18,6 +18,7 @@ import { AngularMaterialModule } from './@shared/modules/angular-material/angula
 import { GiocaComponent } from './components/gioca/gioca.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { MatCardModule } from '@angular/material/card';
+import { RegistrationSuccessComponent } from './@shared/components/registration-success/registration-success.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatCardModule } from '@angular/material/card';
     ProfileComponent,
     RankingsComponent,
     GiocaComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    RegistrationSuccessComponent
   ],
   imports: [
     BrowserModule,
