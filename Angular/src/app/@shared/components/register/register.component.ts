@@ -22,9 +22,8 @@ export class RegisterComponent implements OnInit {
     form.control.markAllAsTouched();
     if (form.valid) {
       this.authService.register(form.value).subscribe({
-        next: (response) => {
-          localStorage.setItem("user", JSON.stringify(response));
-          this.router.navigateByUrl("/");
+        next: () => {
+          this.router.navigateByUrl("/login");
         },
         error: () => alert("Registrazione fallita"),
       });
