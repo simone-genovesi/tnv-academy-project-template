@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div (ngSubmit)="startGame()" class="startGame-button d-grid gap-2 col-4 mx-auto">
+            <button type="submit" *ngIf="startGame" class="btn btn-primary btn-lg" (click)="startGame()"
+                (click)="showGame()">Inizia a giocare</button>
+        </div>
+        <br>
+        <div class="row align-items-start" *ngIf="game">
+            <h1 class="title">Ordina i film in base {{this.crit.tag}}</h1>
+            <div class="row col-9">
+                <br>
+                <tnv-gioca-item *ngFor="let movie of movies" class="col-12 col-sm-6 col-md-3 py-2" [movie]="movie">
+                </tnv-gioca-item>
+            </div>
+            <br>
+            <div class="select col-3 col-sm-3 col-md-3 py-2">
+                <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let movie of movies" cdkDrag>
+                        {{movie.title}}
+                        <img *cdkDragPreview [src]="imageBaseUrl + movie.poster_path" [alt]="movie.title">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
