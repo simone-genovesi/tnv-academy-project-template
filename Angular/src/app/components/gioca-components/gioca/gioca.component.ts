@@ -20,7 +20,7 @@ export class GiocaComponent implements OnInit {
   orderedMovies: Partial<Movie>[] = [];
   crit: Crit = {tag:"", key: ``};
   currentUserId = this.authService.getCurrentUser().id;
-  imageBaseUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
+  imageBaseUrl: string = "https://image.tmdb.org/t/p/w500"
   game = false;
   results = false;
 
