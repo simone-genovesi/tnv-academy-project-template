@@ -5,7 +5,7 @@ const { DataTypes } = Sequelize;
 
 const Rating = db.define('ratings', {
   userId: {
-    type: DataTypes.STRING
+    type: DataTypes.INTEGER
   },
   movieId: {
     type: DataTypes.STRING
@@ -14,7 +14,9 @@ const Rating = db.define('ratings', {
     type: DataTypes.INTEGER
   }
 }, {
-  freezeTableName: true
+  freezeTableName: true,
+  timestamps: false,
+  underscored: 0
 });
  
 export default Rating;

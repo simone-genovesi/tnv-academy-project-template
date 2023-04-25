@@ -12,8 +12,6 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
-
-
   login(loginData: LoginDTO): Observable<User> {
     return this.http.post<User>(`${this.springBootUrl}/login`, loginData).pipe(
       tap((user: User) => {

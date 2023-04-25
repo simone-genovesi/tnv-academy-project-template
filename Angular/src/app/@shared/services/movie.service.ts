@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {  Crit, Movie } from 'src/app/models/movie';
+import {  Crit, Movie, FavoriteMovie } from 'src/app/models/movie';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
 
+  nodeUrl: String = "http://localhost:1234/api";
   APIKey : string = "api_key=7878a888882e41ddb7ba8f3c2c11e44c"
 
   constructor(private http: HttpClient) { }
@@ -26,7 +27,7 @@ export class MovieService {
         // Qui non usate any ovviamente, ma create l'interfaccia typescript per la response
         next: (res: Partial<Movie>) => {
           console.log('ID trovato', randomId);
-          if (res.poster_path) {
+          if (res.poster_path && res.adult === false && res.original_language === 'en') { //Genere film con poster, non per adulti e in lingua originale in inglese
             this.movies[index] = res;
           } else {
             console.log('Film senza poster');
@@ -55,4 +56,21 @@ export class MovieService {
 
     return crits[randomNumber];
   }
+
+  getMovie(movieId: number | undefined) {
+    return this.http.get<Movie>(`https://api.themoviedb.org/3/movie/${movieId}?${this.APIKey}&language=it-It`);
+  }
+  
+  getFavoriteByUserId(userId: number | undefined){
+    return this.http.get<FavoriteMovie[]>(`${this.nodeUrl}/favorite/${userId}`);
+  }
+  
+  createFavorite(movie: FavoriteMovie){
+    return this.http.post<FavoriteMovie>(`${this.nodeUrl}/favorite`, movie); 
+  }
+  
+  deleteFavorite(userId: number | undefined, movieId: number | undefined){
+    return this.http.delete<FavoriteMovie>(`${this.nodeUrl}/favorite/${userId}/${movieId}`); 
+  }
+
 }

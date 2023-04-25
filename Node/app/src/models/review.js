@@ -14,7 +14,9 @@ const Review = db.define('review', {
     type: DataTypes.STRING
   }
 }, {
-  freezeTableName: true
+  freezeTableName: true,
+  timestamps: false,
+  underscored: 0
 });
  
 export default Review;

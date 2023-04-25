@@ -4,15 +4,12 @@
             <button type="submit" *ngIf="startGame" class="btn btn-primary btn-lg" (click)="startGame()"
                 (click)="showGame()">Inizia a giocare</button>
         </div>
-        <br>
         <div class="row align-items-start" *ngIf="game">
             <h1 class="title">Ordina i film in base {{this.crit.tag}}</h1>
             <div class="row col-9">
-                <br>
                 <tnv-gioca-item *ngFor="let movie of movies" class="col-12 col-sm-6 col-md-3 py-2" [movie]="movie">
                 </tnv-gioca-item>
             </div>
-            <br>
             <div class="select col-3 col-sm-3 col-md-3 py-2">
                 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
                     <div class="example-box" *ngFor="let movie of movies" cdkDrag>
@@ -20,6 +17,11 @@
                         <img *cdkDragPreview [src]="imageBaseUrl + movie.poster_path" [alt]="movie.title">
                     </div>
                 </div>
+                <form >
+                    <button type="button"  class="form-label btn btn-primary rounded submit px-3 mt-2"
+                        >Scopri il tuo punteggio
+                    </button>
+                </form>
             </div>
         </div>
     </div>

@@ -58,6 +58,11 @@ export interface Movie {
     revenue: number
   }
 
+  export interface FavoriteMovie {
+    userId?: number | undefined,
+    movieId: number | undefined;
+  }
+
   export interface Crit {
     tag: string,
     key: string;
