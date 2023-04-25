@@ -24,4 +24,8 @@ export class RankingService {
   getRanking(userId: number){
     return this.http.get<Ranking[]>(`${this.nodeApiUrl}/rankingall/${userId}`);
   }
+
+  updateRanking(userId: number, ranking: Partial<Ranking>){
+    return this.http.patch<Ranking>(`${this.nodeApiUrl}/ranking/${userId}`, ranking);
+  }
 }

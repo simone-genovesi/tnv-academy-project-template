@@ -65,12 +65,13 @@ export class GiocaComponent implements OnInit {
         points = points + 10;
       }
     }
-    this.rankingService.createRanking({ userId: this.currentUserId, gamePoints: points }).subscribe({
+    this.rankingService.updateRanking(this.currentUserId, { userId: this.currentUserId, gamePoints: points }).subscribe({
       next: (res) => {
         console.log(res);
       }
     });
   }
+
 
   ascendingOrder(crit: string) {
     this.orderedMovies?.sort((a: any , b: any) => {
