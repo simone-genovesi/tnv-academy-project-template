@@ -15,8 +15,6 @@ const Rating = db.define('ratings', {
   }
 }, {
   freezeTableName: true,
-  timestamps: false,
-  underscored: 0
 });
  
 export default Rating;

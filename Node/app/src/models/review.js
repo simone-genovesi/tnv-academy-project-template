@@ -8,15 +8,13 @@ const Review = db.define('review', {
     type: DataTypes.INTEGER
   },
   movieId: {
-    type: DataTypes.INTEGER
+    type: DataTypes.STRING
   },
   review: {
     type: DataTypes.STRING
   }
 }, {
   freezeTableName: true,
-  timestamps: false,
-  underscored: 0
 });
  
 export default Review;

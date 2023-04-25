@@ -30,7 +30,8 @@ export class MovieService {
           if (res.poster_path && res.adult === false && res.original_language === 'en') { //Genere film con poster, non per adulti e in lingua originale in inglese
             this.movies[index] = res;
           } else {
-            console.log('Film senza poster');
+            if(!res.poster_path)
+              console.log('Film errato');
             this.getRandomMovie(index);
           }
         },
@@ -72,5 +73,4 @@ export class MovieService {
   deleteFavorite(userId: number | undefined, movieId: number | undefined){
     return this.http.delete<FavoriteMovie>(`${this.nodeUrl}/favorite/${userId}/${movieId}`); 
   }
-
 }

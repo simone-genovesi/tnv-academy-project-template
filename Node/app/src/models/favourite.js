@@ -12,8 +12,6 @@ const FavouriteMovie = db.define('favourites', {
   }
 }, {
   freezeTableName: true,
-  timestamps: false,
-  underscored: 0
 });
  
 export default FavouriteMovie;

@@ -5,7 +5,7 @@
                 (click)="showGame()">Inizia a giocare</button>
         </div>
         <div class="row align-items-start" *ngIf="game">
-            <h1 class="title">Ordina i film in base {{this.crit.tag}}</h1>
+            <h1 class="title">Ordina i film in modo crescente per: {{this.crit.tag}}</h1>
             <div class="row col-9">
                 <tnv-gioca-item *ngFor="let movie of movies" class="col-12 col-sm-6 col-md-3 py-2" [movie]="movie">
                 </tnv-gioca-item>
@@ -17,9 +17,9 @@
                         <img *cdkDragPreview [src]="imageBaseUrl + movie.poster_path" [alt]="movie.title">
                     </div>
                 </div>
-                <form >
-                    <button type="button"  class="form-label btn btn-primary rounded submit px-3 mt-2"
-                        >Scopri il tuo punteggio
+                <form #end="ngForm" (ngSubmit)="finish(end)">
+                    <button type="button" *ngIf="finish" class="form-label btn btn-primary rounded submit px-3 mt-2"
+                        routerLink="/endgame" routerLinkActive="active" (click)="finish(end)">Scopri il tuo punteggio
                     </button>
                 </form>
             </div>

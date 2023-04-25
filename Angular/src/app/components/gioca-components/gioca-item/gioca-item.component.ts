@@ -10,7 +10,7 @@ export class GiocaItemComponent implements OnInit{
 
    @Input() movie: Partial<Movie> = {};
   
-  imageBaseUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
+  imageBaseUrl: string = "https://image.tmdb.org/t/p/w500"
   
   constructor() { }
 

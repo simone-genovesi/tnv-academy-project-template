@@ -12,8 +12,6 @@ const Ranking = db.define('ranking', {
   }
 }, {
   freezeTableName: true,
-  timestamps: false,
-  underscored: 0
 });
  
 export default Ranking;

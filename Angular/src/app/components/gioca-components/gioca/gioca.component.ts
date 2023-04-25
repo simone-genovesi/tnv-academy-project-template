@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/@core/services/auth.service';
 import { MovieService } from 'src/app/@shared/services/movie.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Movie, Crit } from 'src/app/models/movie';
-
+import { RankingService } from 'src/app/@shared/services/ranking.service';
 
 @Component({
   selector: 'tnv-gioca',
@@ -13,17 +13,16 @@ import { Movie, Crit } from 'src/app/models/movie';
 })
 export class GiocaComponent implements OnInit {
 
-  constructor(private movieService: MovieService, private authService: AuthService) { }
+  constructor(private movieService: MovieService, private authService: AuthService, private rankingService: RankingService) { }
 
   movies = this.movieService.movies;
   movie: Partial<Movie> = {};
   orderedMovies: Partial<Movie>[] = [];
   crit: Crit = {tag:"", key: ``};
   currentUserId = this.authService.getCurrentUser().id;
-  imageBaseUrl: string = "https://image.tmdb.org/t/p/w440_and_h660_face"
+  imageBaseUrl: string = "https://image.tmdb.org/t/p/w500"
   game = false;
   results = false;
-
 
   ngOnInit(): void {
     for (let index = 0; index < 10; index++) {
@@ -43,7 +42,6 @@ export class GiocaComponent implements OnInit {
     this.game = !this.game;
   }
 
-
   startGame() {
 
     for (let i = 0; i < 10; i++) {
@@ -58,6 +56,22 @@ export class GiocaComponent implements OnInit {
 
   }
 
+  finish(form: NgForm) {
+    console.log(this.orderedMovies);
+    console.log(this.movies);
+    let points: number = 0;
+    for (let i = 0; i < 10; i++) {
+      if (this.orderedMovies[i] == this.movies[i]) {
+        points = points + 10;
+      }
+    }
+    this.rankingService.createRanking({ userId: this.currentUserId, gamePoints: points }).subscribe({
+      next: (res) => {
+        console.log(res);
+      }
+    });
+  }
+
   ascendingOrder(crit: string) {
     this.orderedMovies?.sort((a: any , b: any) => {
       if (a[crit] === undefined) return -1; // Mette in fondo gli elementi con proprietà mancanti
@@ -67,9 +81,4 @@ export class GiocaComponent implements OnInit {
       return 0;
     });
   }
-
-
-  
-  }
-  
-
+}
