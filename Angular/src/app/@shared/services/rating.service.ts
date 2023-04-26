@@ -12,8 +12,12 @@ export class RatingService {
   constructor(private httpClient: HttpClient) {}
 
 
-  getRating(userId: string, movieId: string) {
+  getRating(userId: number, movieId: string) {
     return this.httpClient.get<Rating>(`${this.API_ROOT}/ratings/${userId}/${movieId}`);
+  }
+
+  getRatingsByUserId(userId: number) {
+    return this.httpClient.get<Rating[]>(`${this.API_ROOT}/ratingsUser/${userId}`);
   }
 
   addRating(rating: Rating) {

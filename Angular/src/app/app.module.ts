@@ -16,13 +16,14 @@ import { RankingsComponent } from './components/rankings/rankings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './@shared/modules/angular-material/angular-material.module';
 import { GiocaComponent } from './components/gioca-components/gioca/gioca.component';
-import { FavoritesComponent } from './components/favorites/favorites.component';
+import { FavoritesComponent } from './components/favorites-components/favorites/favorites.component';
 import { MatCardModule } from '@angular/material/card';
 import { RegistrationSuccessComponent } from './@shared/components/registration-success/registration-success.component';
 import { GiocaItemComponent } from './components/gioca-components/gioca-item/gioca-item.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
-
+import { FavoritesItemComponent } from './components/favorites-components/favorites-item/favorites-item.component';
+import { RatingsComponent } from './components/ratings-components/ratings/ratings.component';
+import { RatingsItemComponent } from './components/ratings-components/ratings-item/ratings-item.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     FavoritesComponent,
     RegistrationSuccessComponent,
     GiocaItemComponent,
+    FavoritesItemComponent,
+    RatingsComponent,
+    RatingsItemComponent,
   ],
   imports: [
     BrowserModule,
