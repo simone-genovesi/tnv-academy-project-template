@@ -50,6 +50,25 @@ export const getRating = async (req, res) => {
     }
 }
 
+export const getRatingsByUserId = async (req, res) => {
+    try {
+        const rating = await Rating.findAll({
+            where: {
+                userId: req.params.userId,
+            }
+        });
+        
+        if (rating) {
+            res.send(rating);
+        } else {
+            res.sendStatus(404);
+        }
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+}
+
 export const updateRating = async (req, res) => {
     try {
         const rating = await Rating.update(req.body, {

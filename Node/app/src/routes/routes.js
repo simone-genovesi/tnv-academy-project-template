@@ -2,7 +2,7 @@ import express from "express";
 
 const API_ROOT = '/api';
 
-import { createRating, getRating, updateRating, deleteRating } from "../controllers/ratings-controller.js";
+import { createRating, getRating, updateRating, deleteRating, getRatingsByUserId } from "../controllers/ratings-controller.js";
 import { createFavourite, getFavourite, getFavouriteByUserId, deleteFavourite } from "../controllers/favourites-controller.js";
 import { createRanking, getRanking, getRankingByUserId, updateRanking } from "../controllers/rankings-controller.js"
 import { createReview, getReview, getReviewByUserId } from "../controllers/review-controller.js"
@@ -11,6 +11,7 @@ const router = express.Router();
 
 router.post(`${API_ROOT}/rating`, createRating);
 router.get(`${API_ROOT}/rating/:userId/:movieId`, getRating);
+router.get(`${API_ROOT}/ratingsUser/:userId`, getRatingsByUserId);
 router.patch(`${API_ROOT}/rating/:id`, updateRating);
 router.delete(`${API_ROOT}/rating/:id`, deleteRating);
 
