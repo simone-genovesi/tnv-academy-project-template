@@ -1,6 +1,6 @@
 export interface Rating {
     id?: string,
-    userId: number,
+    userId: string,
     movieId: string,
     rating: number
 }

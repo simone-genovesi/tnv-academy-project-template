@@ -6,9 +6,9 @@ import { MainPageComponent } from "./components/main-page/main-page.component";
 import { RegisterComponent } from "./@shared/components/register/register.component";
 import { WelcomeComponent } from "./components/welcome/welcome.component";
 import { ProfileComponent } from "./components/profile/profile.component";
-import { RankingsComponent } from "./components/rankings/rankings.component";
+import { RankingsComponent } from "./components/ranking-components/rankings/rankings.component";
 import { GiocaComponent } from "./components/gioca-components/gioca/gioca.component";
-import { FavoritesComponent } from "./components/favorites-components/favorites/favorites.component";
+import { FavoritesComponent } from "./components/favorites/favorites.component";
 import { RegistrationSuccessComponent } from "./@shared/components/registration-success/registration-success.component";
 
 const routes: Routes = [

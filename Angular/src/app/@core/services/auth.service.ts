@@ -37,4 +37,9 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem("user") || '') as User;
     return user;
   }
+
+  getUserById(userId: number) {
+    return this.http.get<User>(`${this.springBootUrl}/${userId}`);
+  }
+
 }

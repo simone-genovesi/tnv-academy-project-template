@@ -12,18 +12,18 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { NavbarComponent } from './@shared/components/navbar/navbar.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { RankingsComponent } from './components/rankings/rankings.component';
+import { RankingsComponent } from './components/ranking-components/rankings/rankings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './@shared/modules/angular-material/angular-material.module';
 import { GiocaComponent } from './components/gioca-components/gioca/gioca.component';
-import { FavoritesComponent } from './components/favorites-components/favorites/favorites.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 import { MatCardModule } from '@angular/material/card';
 import { RegistrationSuccessComponent } from './@shared/components/registration-success/registration-success.component';
 import { GiocaItemComponent } from './components/gioca-components/gioca-item/gioca-item.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { FavoritesItemComponent } from './components/favorites-components/favorites-item/favorites-item.component';
-import { RatingsComponent } from './components/ratings-components/ratings/ratings.component';
-import { RatingsItemComponent } from './components/ratings-components/ratings-item/ratings-item.component';
+import { RankingItemComponent } from './components/ranking-components/ranking-item/ranking-item.component';
+
+
 
 @NgModule({
   declarations: [
@@ -40,9 +40,7 @@ import { RatingsItemComponent } from './components/ratings-components/ratings-it
     FavoritesComponent,
     RegistrationSuccessComponent,
     GiocaItemComponent,
-    FavoritesItemComponent,
-    RatingsComponent,
-    RatingsItemComponent,
+    RankingItemComponent,
   ],
   imports: [
     BrowserModule,
