@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titolo</th>
+            <th scope="col">Azione</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movie of favoriteMovies; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ movie?.movieId }}</td>
+            <td><button>Elimina</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
