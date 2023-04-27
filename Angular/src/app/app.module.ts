@@ -21,6 +21,10 @@ import { MatCardModule } from '@angular/material/card';
 import { RegistrationSuccessComponent } from './@shared/components/registration-success/registration-success.component';
 import { GiocaItemComponent } from './components/gioca-components/gioca-item/gioca-item.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HeroContentComponent } from './components/hero-content/hero-content.component';
+import { FineGiocaComponent } from './components/gioca-components/fine-gioca/fine-gioca.component';
+import { FineGiocaItemComponent } from './components/gioca-components/fine-gioca-item/fine-gioca-item.component';
+import { ReviewComponent } from './components/review/review.component';
 
 
 
@@ -39,6 +43,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     FavoritesComponent,
     RegistrationSuccessComponent,
     GiocaItemComponent,
+    HeroContentComponent,
+    FineGiocaComponent,
+    FineGiocaItemComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
