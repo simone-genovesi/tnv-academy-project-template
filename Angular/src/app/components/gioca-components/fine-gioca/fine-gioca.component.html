@@ -1,0 +1,14 @@
+<div class="row">
+
+    <h2>Hai totalizzato: {{rankingUser.lastPoints}} punti.</h2>
+    <br>
+    <tnv-fine-gioca-item *ngFor="let movie of movies" [movie]="movie" class="col-12 col-sm-6">
+    </tnv-fine-gioca-item>
+</div>
+
+<div class="finish-button d-grid gap-2 col-4 mx-auto">
+    <br>
+    <button type="submit" class="btn btn-primary btn-lg" routerLink="/rankings" routerLinkActive="active">Mostra la
+        classifica
+    </button>
+    <br>

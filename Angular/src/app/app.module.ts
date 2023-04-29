@@ -18,10 +18,16 @@ import { AngularMaterialModule } from './@shared/modules/angular-material/angula
 import { GiocaComponent } from './components/gioca-components/gioca/gioca.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { RegistrationSuccessComponent } from './@shared/components/registration-success/registration-success.component';
 import { GiocaItemComponent } from './components/gioca-components/gioca-item/gioca-item.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RankingItemComponent } from './components/ranking-components/ranking-item/ranking-item.component';
+import { HeroContentComponent } from './components/hero-content/hero-content.component';
+import { FineGiocaComponent } from './components/gioca-components/fine-gioca/fine-gioca.component';
+import { FineGiocaItemComponent } from './components/gioca-components/fine-gioca-item/fine-gioca-item.component';
+import { ReviewComponent } from './components/review/review.component';
 
 
 
@@ -41,6 +47,10 @@ import { RankingItemComponent } from './components/ranking-components/ranking-it
     RegistrationSuccessComponent,
     GiocaItemComponent,
     RankingItemComponent,
+    HeroContentComponent,
+    FineGiocaComponent,
+    FineGiocaItemComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +61,9 @@ import { RankingItemComponent } from './components/ranking-components/ranking-it
     BrowserAnimationsModule,
     AngularMaterialModule,
     MatCardModule,
-    DragDropModule
+    DragDropModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

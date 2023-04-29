@@ -48,60 +48,72 @@ export const getRankingByUserId = async (req, res) => {
 
 
 export const updateRanking = async (req, res) => {
-    try {
-      const userId = req.params.userId;
-      const lastPoints = req.body.lastPoints;
-  
-      let ranking = await Ranking.findOne({
-        where: {
-          userId: userId,
-        }
-      });
-  
-      const updatedRanking = ranking.gamePoints + lastPoints;
-      await ranking.update({ gamePoints: updatedRanking });
-  
-      res.json({
-          message: "Valutazione aggiornata",
-          data: updatedRanking,
-        });
-    } catch (err) {
-      console.log(err);
-      res.status(400).json({ error: "Errore interno del server" });
-    }
-  };
+  try {
+    const userId = req.params.userId;
+    const gamePoints = req.body.gamePoints;
+    const lastPoints = req.body.lastPoints;
 
-  export const updateLastPoints = async (req, res) => {
-    try {
-      const userId = req.params.userId;
-      const lastPoints = req.body.lastPoints;
-  
-      let [ranking, created] = await Ranking.findOrCreate({
-        where: {
-          userId: userId,
-        },
-        defaults: {
-          gamePoints: 0,
-          lastPoints: 0,
-        },
+    let [ranking, created] = await Ranking.findOrCreate({
+      where: {
+        userId: userId,
+      },
+      defaults: {
+        gamePoints: 0,
+        lastPoints: 0,
+      },
+    });
+
+    const updatedGamePoints = ranking.gamePoints + lastPoints;
+    const updatedLastPoints = lastPoints;
+    await ranking.update({ gamePoints: updatedGamePoints, lastPoints: updatedLastPoints });
+
+    if (created) {
+      res.status(201).json({
+        message: "Nuovo ranking creato",
+        data: { gamePoints: updatedGamePoints, lastPoints: updatedLastPoints },
       });
-  
-      const updatedRanking = lastPoints;
-      await ranking.update({ lastPoints: updatedRanking });
-  
-      if (created) {
-        res.status(201).json({
-          message: "Nuovo ranking creato",
-          data: updatedRanking,
-        });
-      } else {
-        res.json({
-          message: "Valutazione aggiornata",
-          data: updatedRanking,
-        });
-      }
-    } catch (err) {
-      console.log(err);
-      res.status(500).json({ error: "Errore interno del server" });
+    } else {
+      res.json({
+        message: "Valutazione aggiornata",
+        data: { gamePoints: updatedGamePoints, lastPoints: updatedLastPoints },
+      });
     }
-  };
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Errore interno del server" });
+  }
+}
+  // export const updateLastPoints = async (req, res) => {
+  //   try {
+  //     const userId = req.params.userId;
+  //     const lastPoints = req.body.lastPoints;
+  
+  //     let [ranking, created] = await Ranking.findOrCreate({
+  //       where: {
+  //         userId: userId,
+  //       },
+  //       defaults: {
+  //         gamePoints: 0,
+  //         lastPoints: 0,
+  //       },
+  //     });
+  
+  //     const updatedRanking = lastPoints;
+  //     await ranking.update({ lastPoints: updatedRanking });
+  
+  //     if (created) {
+  //       res.status(201).json({
+  //         message: "Nuovo ranking creato",
+  //         data: updatedRanking,
+  //       });
+  //     } else {
+  //       res.json({
+  //         message: "Valutazione aggiornata",
+  //         data: updatedRanking,
+  //       });
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).json({ error: "Errore interno del server" });
+  //   }
+  // };

@@ -14,9 +14,14 @@ export const createReview = async (req, res) => {
     }
 }
 
-export const getReview = async (req, res) => {
-    try{
-        const review = await Review.findAll();
+export const getReviewByUserIdAndMovieId = async (req, res) => {
+    try {
+        const review = await Review.findOne({
+            where: {
+                userId: req.params.userId,
+                movieId: req.params.movieId
+            }
+        });
         if (review) {
             res.send(review);
         } else {

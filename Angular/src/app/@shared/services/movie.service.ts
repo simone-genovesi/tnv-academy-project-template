@@ -8,8 +8,10 @@ import {  Crit, Movie, FavoriteMovie, ResultMovie, DiscoverMovie } from 'src/app
 export class MovieService {
 
   nodeUrl: String = "http://localhost:1234/api";
+
   APIKey : string = "api_key=7878a888882e41ddb7ba8f3c2c11e44c"
   APIKey2 : string = "api_key=3847043e35bdce9e599f5fb0e3851484"
+
 
   constructor(private http: HttpClient) { }
 
@@ -52,6 +54,7 @@ export class MovieService {
         },
       });
   }
+ 
 
   getRandomCrit(){
 

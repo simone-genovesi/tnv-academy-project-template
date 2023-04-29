@@ -16,13 +16,15 @@ export class GiocaComponent implements OnInit {
   constructor(private movieService: MovieService, private authService: AuthService, private rankingService: RankingService) { }
 
   movies = this.movieService.movies;
-  movie: Partial<Movie> = {};
+  
   orderedMovies: Partial<Movie>[] = [];
   crit: Crit = {tag:"", key: ``};
   currentUserId = this.authService.getCurrentUser().id;
   imageBaseUrl: string = "https://image.tmdb.org/t/p/w500"
   game = false;
-  gameBottom = true;
+
+  gameBotton = true;
+
   results = false;
 
   ngOnInit(): void {
@@ -42,7 +44,9 @@ export class GiocaComponent implements OnInit {
   }
 
   showBottomPlay() {
-    this.gameBottom = !this.gameBottom;
+
+    this.gameBotton = !this.gameBotton;
+
   }
 
   startGame() {
@@ -65,10 +69,12 @@ export class GiocaComponent implements OnInit {
     let points: number = 0;
     for (let i = 0; i < 10; i++) {
       if (this.orderedMovies[i] == this.movies[i]) {
-        points = points + 10;
+        points += 10;
       }
     }
-    this.rankingService.updateRanking(this.currentUserId, { userId: this.currentUserId, gamePoints: points }).subscribe({
+
+    console.log(points);
+    this.rankingService.updateRanking(this.currentUserId, { userId: this.currentUserId, lastPoints: points }).subscribe({
       next: (res) => {
         console.log(res);
       }

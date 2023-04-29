@@ -1,0 +1,32 @@
+.card-container{
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px lightgray;
+}
+
+.card-text-center{
+    justify-content: center;
+    flex-direction: column;
+    
+    
+}
+
+.card-header{
+    background-color:#00909a;
+    
+}
+
+h5{
+    margin-top: auto;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+ 
+.card-text-content{
+    text-align: justify;
+    font-size: 20px;
+
+}
