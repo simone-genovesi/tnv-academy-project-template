@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { AuthService } from 'src/app/@core/services/auth.service';
-import { RankingService } from 'src/app/@shared/services/ranking.service';
 import { Ranking } from 'src/app/models/ranking';
 import { User } from 'src/app/models/user';
 
@@ -12,6 +11,7 @@ import { User } from 'src/app/models/user';
 export class RankingItemComponent {
 
   @Input() ranking: Partial<Ranking> = {};
+  @Input() index: number | undefined;
   username!: string;
 
   constructor(private authService: AuthService) { }
@@ -22,9 +22,5 @@ export class RankingItemComponent {
       console.log(this.username);
       console.log(this.ranking);
     });
-  }
-
-  getRankingUsername() {
-    return this.username;
   }
 }

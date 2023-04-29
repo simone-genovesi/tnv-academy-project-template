@@ -22,7 +22,9 @@ export class GiocaComponent implements OnInit {
   currentUserId = this.authService.getCurrentUser().id;
   imageBaseUrl: string = "https://image.tmdb.org/t/p/w500"
   game = false;
+
   gameBotton = true;
+
   results = false;
 
   ngOnInit(): void {
@@ -34,7 +36,7 @@ export class GiocaComponent implements OnInit {
 
   drop(event: CdkDragDrop<{ title: string; poster: string }[]>) {
     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
-    console.log(this.movies);
+    //console.log(this.movies);
   }
 
   showGame() {
@@ -42,7 +44,9 @@ export class GiocaComponent implements OnInit {
   }
 
   showBottomPlay() {
+
     this.gameBotton = !this.gameBotton;
+
   }
 
   startGame() {
@@ -76,7 +80,6 @@ export class GiocaComponent implements OnInit {
       }
     });
   }
-
 
   ascendingOrder(crit: string) {
     this.orderedMovies?.sort((a: any , b: any) => {

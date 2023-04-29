@@ -7,6 +7,7 @@ import { createFavourite, getFavourite, getFavouriteByUserId, deleteFavourite } 
 import { createRanking, getRanking, getRankingByUserId, updateRanking } from "../controllers/rankings-controller.js"
 import { createReview, getReviewByUserIdAndMovieId, getReviewByUserId } from "../controllers/review-controller.js"
 
+
 const router = express.Router();
 
 router.post(`${API_ROOT}/rating`, createRating);

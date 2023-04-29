@@ -1,8 +1,4 @@
 
       <tbody>
-        <tr>
-          
-          <tnv-ranking-item *ngFor="let ranking of rankings" [ranking]="ranking ?? {}"></tnv-ranking-item>
-        </tr>
-        
+        <tnv-ranking-item *ngFor="let ranking of rankings; let i = index" [ranking]="ranking" [index]="i+1"></tnv-ranking-item>
       </tbody>

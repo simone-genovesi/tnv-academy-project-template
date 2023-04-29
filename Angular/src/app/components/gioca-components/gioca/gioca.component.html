@@ -1,5 +1,6 @@
 <div class="container">
     <div class="row">
+
         <div (ngSubmit)="startGame()" *ngIf="gameBotton" class="startGame-button d-grid gap-2 col-4 mx-auto">
             <button type="submit" *ngIf="startGame" class="btn btn-primary btn-lg" (click)="startGame()"
                 (click)="showGame()" (click) ="showBottomPlay()">Inizia a giocare</button>

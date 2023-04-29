@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {  Crit, Movie, FavoriteMovie, DiscoverMovie } from 'src/app/models/movie';
+import {  Crit, Movie, FavoriteMovie, ResultMovie, DiscoverMovie } from 'src/app/models/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,10 @@ import {  Crit, Movie, FavoriteMovie, DiscoverMovie } from 'src/app/models/movie
 export class MovieService {
 
   nodeUrl: String = "http://localhost:1234/api";
-  APIKey : string = "api_key=7878a888882e41ddb7ba8f3c2c11e44c";
-  APIKey2 : string = "api_key=3847043e35bdce9e599f5fb0e3851484";
+
+  APIKey : string = "api_key=7878a888882e41ddb7ba8f3c2c11e44c"
+  APIKey2 : string = "api_key=3847043e35bdce9e599f5fb0e3851484"
+
 
   constructor(private http: HttpClient) { }
 
@@ -56,7 +58,6 @@ export class MovieService {
 
   getRandomCrit(){
 
-    const maxCrit = 5;
     const crits : Crit[] = [
       {tag: "anno di uscita", key: `release_date`},
       {tag: "media voti", key: `vote_average`},
