@@ -16,13 +16,12 @@ import { RankingsComponent } from './components/ranking-components/rankings/rank
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './@shared/modules/angular-material/angular-material.module';
 import { GiocaComponent } from './components/gioca-components/gioca/gioca.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 import { MatCardModule } from '@angular/material/card';
 import { RegistrationSuccessComponent } from './@shared/components/registration-success/registration-success.component';
 import { GiocaItemComponent } from './components/gioca-components/gioca-item/gioca-item.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RankingItemComponent } from './components/ranking-components/ranking-item/ranking-item.component';
-import { FavoritesItemComponent } from './components/favorites-components/favorites-item/favorites-item.component';
-import { FavoriteComponent } from './components/favorites-components/favorites/favorites.component';
 
 
 
@@ -38,10 +37,10 @@ import { FavoriteComponent } from './components/favorites-components/favorites/f
     ProfileComponent,
     RankingsComponent,
     GiocaComponent,
+    FavoritesComponent,
     RegistrationSuccessComponent,
     GiocaItemComponent,
     RankingItemComponent,
-    FavoriteComponent
   ],
   imports: [
     BrowserModule,

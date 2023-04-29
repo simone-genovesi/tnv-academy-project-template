@@ -49,35 +49,59 @@ export const getRankingByUserId = async (req, res) => {
 
 export const updateRanking = async (req, res) => {
     try {
-
-        const gamePoints = req.body.gamePoints;
-
-        console.log("Recupero gamepoints");
-        console.log(`punteggi: ${gamePoints}`);
-        console.log(`userID: ${req.params.userId}`);
-
-        const ranking = await Ranking.findOne({
-            where: {
-                userId: req.params.userId,
-            }
-        });
-
-        console.log("Recupero ranking");
-
-        // Aggiornamento del valore "rating" sommandolo a quello esistente
-        const updatedRanking = ranking.gamePoints + gamePoints;
-
-        console.log("Somma punteggi");
-
-        await ranking.update({ gamePoints: updatedRanking });
-        //await ranking.save();
-
-        res.json({
-            "message": "Valutazione aggiornata",
-            data: updatedRanking
+      const userId = req.params.userId;
+      const lastPoints = req.body.lastPoints;
+  
+      let ranking = await Ranking.findOne({
+        where: {
+          userId: userId,
+        }
+      });
+  
+      const updatedRanking = ranking.gamePoints + lastPoints;
+      await ranking.update({ gamePoints: updatedRanking });
+  
+      res.json({
+          message: "Valutazione aggiornata",
+          data: updatedRanking,
         });
     } catch (err) {
-        console.log(err);
-        res.sendStatus(500);
+      console.log(err);
+      res.status(400).json({ error: "Errore interno del server" });
     }
-}
+  };
+
+  export const updateLastPoints = async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const lastPoints = req.body.lastPoints;
+  
+      let [ranking, created] = await Ranking.findOrCreate({
+        where: {
+          userId: userId,
+        },
+        defaults: {
+          gamePoints: 0,
+          lastPoints: 0,
+        },
+      });
+  
+      const updatedRanking = lastPoints;
+      await ranking.update({ lastPoints: updatedRanking });
+  
+      if (created) {
+        res.status(201).json({
+          message: "Nuovo ranking creato",
+          data: updatedRanking,
+        });
+      } else {
+        res.json({
+          message: "Valutazione aggiornata",
+          data: updatedRanking,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ error: "Errore interno del server" });
+    }
+  };

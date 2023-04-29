@@ -22,12 +22,11 @@ export class GiocaComponent implements OnInit {
   currentUserId = this.authService.getCurrentUser().id;
   imageBaseUrl: string = "https://image.tmdb.org/t/p/w500"
   game = false;
+  gameBottom = true;
   results = false;
 
   ngOnInit(): void {
-    for (let index = 0; index < 10; index++) {
-      this.movieService.getRandomMovie(index);
-    }
+    this.movieService.getRandomMovie();
 
     this.crit = this.movieService.getRandomCrit();
     console.log(this.crit.key);
@@ -35,11 +34,15 @@ export class GiocaComponent implements OnInit {
 
   drop(event: CdkDragDrop<{ title: string; poster: string }[]>) {
     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
-    console.log(this.movies);
+    //console.log(this.movies);
   }
 
   showGame() {
     this.game = !this.game;
+  }
+
+  showBottomPlay() {
+    this.gameBottom = !this.gameBottom;
   }
 
   startGame() {
@@ -71,7 +74,6 @@ export class GiocaComponent implements OnInit {
       }
     });
   }
-
 
   ascendingOrder(crit: string) {
     this.orderedMovies?.sort((a: any , b: any) => {

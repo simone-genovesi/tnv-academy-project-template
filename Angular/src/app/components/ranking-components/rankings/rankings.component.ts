@@ -12,7 +12,7 @@ export class RankingsComponent implements OnInit {
 
   constructor(private rankingService: RankingService, private authService: AuthService) { }
 
-  rankings: (Ranking | undefined)[] = [];
+  rankings: Partial<Ranking>[] = [];
 
   ngOnInit(): void {
 
@@ -22,6 +22,5 @@ export class RankingsComponent implements OnInit {
       this.rankings = res;
       console.log(this.rankings);
     });
-
   }
 }
