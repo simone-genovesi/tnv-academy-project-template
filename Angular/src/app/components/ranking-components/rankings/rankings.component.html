@@ -1,17 +1,8 @@
-<div class="container">
-    <div class="row align-items-start">
-      <div class="col-8">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Utente</th>
-              <th scope="col">Punteggio</th>
-            </tr>
-        </thead>
+
       <tbody>
-        <tnv-ranking-item *ngFor="let ranking of rankings" [ranking]="ranking ?? {}"></tnv-ranking-item>
+        <tr>
+          
+          <tnv-ranking-item *ngFor="let ranking of rankings" [ranking]="ranking ?? {}"></tnv-ranking-item>
+        </tr>
+        
       </tbody>
-    </table>
-  </div>
-</div>

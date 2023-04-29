@@ -10,6 +10,7 @@ import { RankingsComponent } from "./components/ranking-components/rankings/rank
 import { GiocaComponent } from "./components/gioca-components/gioca/gioca.component";
 import { FavoritesComponent } from "./components/favorites/favorites.component";
 import { RegistrationSuccessComponent } from "./@shared/components/registration-success/registration-success.component";
+import { FineGiocaComponent } from "./components/gioca-components/fine-gioca/fine-gioca.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: "profile", component: ProfileComponent },
       { path: "rankings", component: RankingsComponent },
       { path: "start", component: GiocaComponent },
+      { path: "end", component: FineGiocaComponent },
       { path: "favorites", component: FavoritesComponent },
       { path: "", redirectTo: "welcome", pathMatch: 'full' },
     ],

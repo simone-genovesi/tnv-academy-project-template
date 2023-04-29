@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
-        <div (ngSubmit)="startGame()" class="startGame-button d-grid gap-2 col-4 mx-auto">
+        <div (ngSubmit)="startGame()" *ngIf="gameBotton" class="startGame-button d-grid gap-2 col-4 mx-auto">
             <button type="submit" *ngIf="startGame" class="btn btn-primary btn-lg" (click)="startGame()"
-                (click)="showGame()">Inizia a giocare</button>
+                (click)="showGame()" (click) ="showBottomPlay()">Inizia a giocare</button>
         </div>
         <div class="row align-items-start" *ngIf="game">
-            <h1 class="title">Ordina i film in modo crescente per: {{this.crit.tag}}</h1>
+            <h2 class="title">Ordina i film in modo crescente per: {{this.crit.tag}}</h2>
             <div class="row col-9">
                 <tnv-gioca-item *ngFor="let movie of movies" class="col-12 col-sm-6 col-md-3 py-2" [movie]="movie">
                 </tnv-gioca-item>
@@ -19,7 +19,7 @@
                 </div>
                 <form #end="ngForm" (ngSubmit)="finish(end)">
                     <button type="button" *ngIf="finish" class="form-label btn btn-primary rounded submit px-3 mt-2"
-                        routerLink="/endgame" routerLinkActive="active" (click)="finish(end)">Scopri il tuo punteggio
+                        routerLink="/end" routerLinkActive="active" (click)="finish(end)">Scopri il tuo punteggio
                     </button>
                 </form>
             </div>

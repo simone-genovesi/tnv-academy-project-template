@@ -48,36 +48,72 @@ export const getRankingByUserId = async (req, res) => {
 
 
 export const updateRanking = async (req, res) => {
-    try {
+  try {
+    const userId = req.params.userId;
+    const gamePoints = req.body.gamePoints;
+    const lastPoints = req.body.lastPoints;
 
-        const gamePoints = req.body.gamePoints;
+    let [ranking, created] = await Ranking.findOrCreate({
+      where: {
+        userId: userId,
+      },
+      defaults: {
+        gamePoints: 0,
+        lastPoints: 0,
+      },
+    });
 
-        console.log("Recupero gamepoints");
-        console.log(`punteggi: ${gamePoints}`);
-        console.log(`userID: ${req.params.userId}`);
+    const updatedGamePoints = ranking.gamePoints + lastPoints;
+    const updatedLastPoints = lastPoints;
+    await ranking.update({ gamePoints: updatedGamePoints, lastPoints: updatedLastPoints });
 
-        const ranking = await Ranking.findOne({
-            where: {
-                userId: req.params.userId,
-            }
-        });
-
-        console.log("Recupero ranking");
-
-        // Aggiornamento del valore "rating" sommandolo a quello esistente
-        const updatedRanking = ranking.gamePoints + gamePoints;
-
-        console.log("Somma punteggi");
-
-        await ranking.update({ gamePoints: updatedRanking });
-        //await ranking.save();
-
-        res.json({
-            "message": "Valutazione aggiornata",
-            data: updatedRanking
-        });
-    } catch (err) {
-        console.log(err);
-        res.sendStatus(500);
+    if (created) {
+      res.status(201).json({
+        message: "Nuovo ranking creato",
+        data: { gamePoints: updatedGamePoints, lastPoints: updatedLastPoints },
+      });
+    } else {
+      res.json({
+        message: "Valutazione aggiornata",
+        data: { gamePoints: updatedGamePoints, lastPoints: updatedLastPoints },
+      });
     }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Errore interno del server" });
+  }
 }
+  // export const updateLastPoints = async (req, res) => {
+  //   try {
+  //     const userId = req.params.userId;
+  //     const lastPoints = req.body.lastPoints;
+  
+  //     let [ranking, created] = await Ranking.findOrCreate({
+  //       where: {
+  //         userId: userId,
+  //       },
+  //       defaults: {
+  //         gamePoints: 0,
+  //         lastPoints: 0,
+  //       },
+  //     });
+  
+  //     const updatedRanking = lastPoints;
+  //     await ranking.update({ lastPoints: updatedRanking });
+  
+  //     if (created) {
+  //       res.status(201).json({
+  //         message: "Nuovo ranking creato",
+  //         data: updatedRanking,
+  //       });
+  //     } else {
+  //       res.json({
+  //         message: "Valutazione aggiornata",
+  //         data: updatedRanking,
+  //       });
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).json({ error: "Errore interno del server" });
+  //   }
+  // };

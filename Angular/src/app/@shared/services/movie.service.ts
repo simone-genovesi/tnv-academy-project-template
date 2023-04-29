@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {  Crit, Movie, FavoriteMovie } from 'src/app/models/movie';
+import {  Crit, Movie, FavoriteMovie, DiscoverMovie } from 'src/app/models/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -8,39 +8,51 @@ import {  Crit, Movie, FavoriteMovie } from 'src/app/models/movie';
 export class MovieService {
 
   nodeUrl: String = "http://localhost:1234/api";
-  APIKey : string = "api_key=7878a888882e41ddb7ba8f3c2c11e44c"
+  APIKey : string = "api_key=7878a888882e41ddb7ba8f3c2c11e44c";
+  APIKey2 : string = "api_key=3847043e35bdce9e599f5fb0e3851484";
 
   constructor(private http: HttpClient) { }
 
   movies: Partial<Movie>[] = [];
 
-  getRandomMovie(index: number) {
-    // Per determinare questo valore facciamo eventualmente una query su movies/latest per avere l'id dell'ultimo Film inserito su TMDB
-    const latestId = 30000;
-    const randomId = Math.round(Math.random() * latestId);
-    
+  getRandomMovie() {
+    const lastedPage = 500;
+    const randomId = Math.round(Math.random() * lastedPage);
+    const queryString1 = "language=it-IT&sort_by=popularity.desc&certification.gte=1990&include_adult=false&include_video=false";
+    const queryString2 = "with_original_language=en&with_watch_monetization_types=flatrate";
+
       this.http
       .get(
-        `https://api.themoviedb.org/3/movie/${randomId}?${this.APIKey}&language=it-IT`
+        `https://api.themoviedb.org/3/discover/movie?${this.APIKey}&${queryString1}&page=${randomId}&${queryString2}`
       )
       .subscribe({
-        // Qui non usate any ovviamente, ma create l'interfaccia typescript per la response
-        next: (res: Partial<Movie>) => {
-          console.log('ID trovato', randomId);
-          if (res.poster_path && res.adult === false && res.original_language === 'en') { //Genere film con poster, non per adulti e in lingua originale in inglese
-            this.movies[index] = res;
-          } else {
-            if(!res.poster_path)
-              console.log('Film errato');
-            this.getRandomMovie(index);
-          }
+
+        next: (res: Partial<DiscoverMovie>) => {
+            console.log(`Pagina discover: ${randomId}`);
+            console.log(res.results);
+            let filteredMovies = res.results!.sort(() => Math.random() - 0.5).slice(0,10);
+            for(let index = 0; index < filteredMovies.length; index++)
+              this.getMovieDetails(filteredMovies[index].id, index);
         },
         error: () => {
-          console.log('ID non esistente, retry!', randomId);
-          this.getRandomMovie(index);
+          console.log('Errore nella chiamata dei film');
         },
       });
   }
+
+  getMovieDetails(movieId: number, index: number) {
+    this.http
+      .get(`https://api.themoviedb.org/3/movie/${movieId}?${this.APIKey2}&language=it-IT`)
+      .subscribe({
+        next: (res: Partial<Movie>) => {
+          this.movies[index] = res;
+        },
+        error: () => {
+          console.log('Errore nella chiamata di dettaglio del film');
+        },
+      });
+  }
+ 
 
   getRandomCrit(){
 

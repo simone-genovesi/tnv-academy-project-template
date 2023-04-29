@@ -15,17 +15,12 @@ export class RankingService {
   getRankingByUserId(userId: number){
     return this.http.get<Ranking>(`${this.nodeApiUrl}/ranking/${userId}`);
   }
-
-  createRanking(ranking: Partial<Ranking>){
-    this.latestGamePoints = ranking.gamePoints || 0 ;
-    return this.http.post<Ranking>(`${this.nodeApiUrl}/ranking`, ranking); 
-  }
-
+  
   getRanking(userId: number){
     return this.http.get<Ranking[]>(`${this.nodeApiUrl}/rankingall/${userId}`);
   }
 
   updateRanking(userId: number, ranking: Partial<Ranking>){
-    return this.http.patch<Ranking>(`${this.nodeApiUrl}/ranking/${userId}`, ranking);
+    return this.http.patch<Ranking>(`${this.nodeApiUrl}/updateranking/${userId}`, ranking);
   }
 }

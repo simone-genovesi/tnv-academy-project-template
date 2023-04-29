@@ -9,6 +9,9 @@ const Ranking = db.define('ranking', {
   },
   gamePoints: {
     type: DataTypes.INTEGER
+  },
+  lastPoints: {
+    type: DataTypes.INTEGER
   }
 }, {
   freezeTableName: true,
