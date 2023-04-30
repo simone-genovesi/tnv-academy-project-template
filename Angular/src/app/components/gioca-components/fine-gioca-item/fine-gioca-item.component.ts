@@ -1,10 +1,10 @@
-import { Component, Input, OnInit, ViewChild  } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbAlert, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { debounceTime, Subject } from 'rxjs';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { MovieService } from 'src/app/@shared/services/movie.service';
-import { Movie } from 'src/app/models/movie';
+import { Movie, Rating } from 'src/app/models/movie';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -15,14 +15,25 @@ import { User } from 'src/app/models/user';
 
 
 
-export class FineGiocaItemComponent implements OnInit{
+export class FineGiocaItemComponent implements OnInit {
+
+  ratings: Rating[] = [
+    { value: 1, viewValue: 1 },
+    { value: 2, viewValue: 2 },
+    { value: 3, viewValue: 3 },
+    { value: 4, viewValue: 4 },
+    { value: 5, viewValue: 5 },
+  ];
+
 
   @Input() movie: Partial<Movie> = {};
   currentUser: Partial<User> = {};
   private _success = new Subject<string>();
+  reviewText: string = '';
+  remainingChars: number = 160;
+  rating: number | undefined;
 
   imageBaseUrl: string = "https://image.tmdb.org/t/p/w500"
-  successMessage = '';
 
   @ViewChild('selfClosingAlert', { static: false }) selfClosingAlert: NgbAlert | undefined;
 
@@ -33,19 +44,22 @@ export class FineGiocaItemComponent implements OnInit{
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
 
-    this._success.subscribe(message => this.successMessage = message);
     this._success.pipe(debounceTime(5000)).subscribe(() => {
       if (this.selfClosingAlert) {
         this.selfClosingAlert.close();
       }
     });
   }
-  
-  public changeSuccessMessage() { this._success.next('Film aggiunto ai preferiti'); }
 
   onSubmit(form: NgForm) {
-      this.movieService.createFavorite({userId: this.currentUser.id, movieId: this.movie.id}).subscribe({
-        next: (res) => {
+    this.movieService.createFavorite({ 
+      userId: this.currentUser.id, 
+      movieTitle: this.movie.title, 
+      posterPath: this.movie.poster_path, 
+      review: this.reviewText, 
+      rating: this.rating 
+    }).subscribe({
+      next: (res) => {
         console.log(res);
       },
     });
@@ -55,4 +69,9 @@ export class FineGiocaItemComponent implements OnInit{
     this.modalService.open(content);
   }
 
+  updateRemainingChars() {
+    this.remainingChars = 160 - this.reviewText.length;
+  }
 }
+
+

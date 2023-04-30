@@ -27,8 +27,9 @@ import { RankingItemComponent } from './components/ranking-components/ranking-it
 import { HeroContentComponent } from './components/hero-content/hero-content.component';
 import { FineGiocaComponent } from './components/gioca-components/fine-gioca/fine-gioca.component';
 import { FineGiocaItemComponent } from './components/gioca-components/fine-gioca-item/fine-gioca-item.component';
-import { ReviewComponent } from './components/review/review.component';
 import { FooterComponent } from './@shared/components/footer/footer.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -52,7 +53,6 @@ import { FooterComponent } from './@shared/components/footer/footer.component';
     HeroContentComponent,
     FineGiocaComponent,
     FineGiocaItemComponent,
-    ReviewComponent,
     FooterComponent
   ],
   imports: [
@@ -66,7 +66,9 @@ import { FooterComponent } from './@shared/components/footer/footer.component';
     MatCardModule,
     DragDropModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

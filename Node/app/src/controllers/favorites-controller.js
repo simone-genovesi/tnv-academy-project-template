@@ -1,12 +1,12 @@
-import FavouriteMovie from "../models/favourite.js";
+import favoriteMovie from "../models/favorite.js";
 
-export const createFavourite = async (req, res) => {
+export const createfavorite = async (req, res) => {
     try {
-        const favourite = await FavouriteMovie.create(req.body);
+        const favorite = await favoriteMovie.create(req.body);
         console.log(req.body)
         res.json({
-            "message": "Creato preferito",
-            data: favourite
+            "message": "Preferito creato",
+            data: favorite
         });
     } catch (err) {
         console.log(err);
@@ -14,16 +14,16 @@ export const createFavourite = async (req, res) => {
     }
 }
 
-export const deleteFavourite = async (req, res) => {
+export const deletefavorite = async (req, res) => {
     try {
-        await FavouriteMovie.destroy({
+        await favoriteMovie.destroy({
             where: {
                 userId: req.params.userId,
                 movieId: req.params.movieId
             }
         });
         res.json({
-            "message": "Il film è stato rimosso dai favoriti"
+            "message": "Il preferuti è stato rimosso"
         });
     } catch (err) {
         console.log(err);
@@ -31,16 +31,16 @@ export const deleteFavourite = async (req, res) => {
     }
 }
 
-export const getFavourite = async (req, res) => {
+export const getfavorite = async (req, res) => {
     try {
-        const favourite = await FavouriteMovie.findOne({
+        const favorite = await favoriteMovie.findOne({
             where: {
                 userId: req.params.userId,
                 movieId: req.params.movieId,
             }
         });
-        if (favourite) {
-            res.send(favourite);
+        if (favorite) {
+            res.send(favorite);
         } else {
             res.sendStatus(404);
         }
@@ -50,15 +50,15 @@ export const getFavourite = async (req, res) => {
     }
 }
 
-export const getFavouriteByUserId = async (req, res) => {
+export const getfavoriteByUserId = async (req, res) => {
     try {
-        const favourite = await FavouriteMovie.findAll({
+        const favorite = await favoriteMovie.findAll({
             where: {
                 userId: req.params.userId,
             }
         });
-        if (favourite) {
-            res.send(favourite);
+        if (favorite) {
+            res.send(favorite);
         } else {
             res.sendStatus(404);
         }

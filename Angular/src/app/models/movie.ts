@@ -55,13 +55,22 @@ export interface Movie {
     vote_average: number;
     runtime: number;
     budget: number;
-    revenue: number
+    revenue: number;
   }
 
   export interface FavoriteMovie {
     userId?: number | undefined,
-    movieId: number | undefined;
+    movieTitle: string | undefined;
+    posterPath: string | undefined;
+    review: string | undefined;
+    rating: number |undefined;
   }
+
+  export interface Rating {
+    value: number;
+    viewValue: number;
+  }
+
 
   export interface Crit {
     tag: string,

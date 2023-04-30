@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {  Crit, Movie, FavoriteMovie, ResultMovie, DiscoverMovie } from 'src/app/models/movie';
+import {  Crit, Movie, FavoriteMovie, DiscoverMovie } from 'src/app/models/movie';
 
 @Injectable({
   providedIn: 'root'

@@ -19,5 +19,5 @@ try {
   console.error("Impossibile connettersi al database: ", error);
 }
 
-//db.sync();
-db.sync({ alter: true });
+db.sync();
+//db.sync({ alter: true });
