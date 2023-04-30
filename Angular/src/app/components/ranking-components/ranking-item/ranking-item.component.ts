@@ -11,7 +11,7 @@ import { User } from 'src/app/models/user';
 export class RankingItemComponent {
 
   @Input() ranking: Partial<Ranking> = {};
-  @Input() index: number | undefined;
+  @Input() index!: number;
   username!: string;
 
   constructor(private authService: AuthService) { }

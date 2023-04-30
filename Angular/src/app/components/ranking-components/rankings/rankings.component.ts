@@ -23,4 +23,6 @@ export class RankingsComponent implements OnInit {
       console.log(this.rankings);
     });
   }
+
+  
 }

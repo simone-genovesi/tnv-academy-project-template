@@ -1,3 +1,11 @@
+.container{
+ padding-left: 35px;
+}
+
+.row{
+  margin-bottom: 100px;
+}
+
 h2 {
   margin-top: 100px;
     text-align: center;
@@ -12,8 +20,7 @@ h2 {
     align-items: center;
 }
 
-.example-list {
-  
+.example-list { 
   float: right;
   width: 500px;
   max-width: 100%;

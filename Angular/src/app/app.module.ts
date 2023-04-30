@@ -28,6 +28,8 @@ import { HeroContentComponent } from './components/hero-content/hero-content.com
 import { FineGiocaComponent } from './components/gioca-components/fine-gioca/fine-gioca.component';
 import { FineGiocaItemComponent } from './components/gioca-components/fine-gioca-item/fine-gioca-item.component';
 import { ReviewComponent } from './components/review/review.component';
+import { FooterComponent } from './@shared/components/footer/footer.component';
+
 
 
 
@@ -51,6 +53,7 @@ import { ReviewComponent } from './components/review/review.component';
     FineGiocaComponent,
     FineGiocaItemComponent,
     ReviewComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

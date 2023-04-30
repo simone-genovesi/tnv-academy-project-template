@@ -1,4 +1,18 @@
-
-      <tbody>
-        <tnv-ranking-item *ngFor="let ranking of rankings; let i = index" [ranking]="ranking" [index]="i+1"></tnv-ranking-item>
-      </tbody>
+<div class="container">
+  <h2>Classifica dei Giocatori</h2>
+  <div class="row align-items-start">
+    <div class="col-12">
+      <div class="table">
+        <div class="row header">
+          <div class="col">Numero</div>
+          <div class="col">Utente</div>
+          <div class="col">Punteggio</div>
+        </div>
+        <div class="separator"></div>
+        <div class="body">
+          <tnv-ranking-item *ngFor="let ranking of rankings; let i = index" [ranking]="ranking" [index]="i+1"></tnv-ranking-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
