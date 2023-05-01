@@ -31,15 +31,16 @@
                       (input)="updateRemainingChars()"
                     ></textarea>
 
-                    <mat-form-field appearance="fill">
-                      <mat-label>Dai un voto al film!</mat-label>
-                      <mat-select name="rating" [(ngModel)]="rating" style="z-index: 9999">
-                        <mat-option *ngFor="let rating of ratings" [value]="rating.value">
-                          {{rating.viewValue}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-
+                    <label id="example-radio-group-label">Dai un voto al film</label>
+                    <mat-radio-group
+                      aria-labelledby="example-radio-group-label"
+                      name="rating"
+                      [(ngModel)]="rating">
+                      <mat-radio-button class="example-radio-button" *ngFor="let rating of ratings" [value]="rating.value">
+                        {{rating.viewValue}}
+                      </mat-radio-button>
+                    </mat-radio-group>
+                    
                   </div>
                   <div>{{ remainingChars }} characters remaining</div>
                 </form>

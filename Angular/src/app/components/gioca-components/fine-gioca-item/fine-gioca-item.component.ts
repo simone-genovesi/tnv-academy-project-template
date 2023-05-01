@@ -54,6 +54,7 @@ export class FineGiocaItemComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.movieService.createFavorite({ 
       userId: this.currentUser.id, 
+      movieId: this.movie.id,
       movieTitle: this.movie.title, 
       posterPath: this.movie.poster_path, 
       review: this.reviewText, 

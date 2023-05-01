@@ -1,0 +1,24 @@
+<div class="col-12 col-3 col-sm-3 col-md-3 py-2">
+  <mat-card>
+
+    <img class="immagine" mat-card-image [src]="imageBaseUrl + favorite.posterPath" [alt]="favorite.movieTitle"
+      style="width: 50%; height: auto;" />
+
+    <mat-card-header>
+      <mat-card-title><strong>{{ favorite.movieTitle | titlecase }}</strong></mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content style="word-wrap: break-word; margin-top: 10px;">
+      <p>{{ favorite.review }}</p>
+    </mat-card-content>
+
+    <mat-card-content style="word-wrap: break-word; margin-top: 10px;">
+      <p>Voto: {{ favorite.rating }}</p>
+    </mat-card-content>
+
+    <mat-card-actions style="display: flex; justify-content: flex-end; align-items: flex-end;">
+      <button mat-button (click)="onDeleteFavorite(favorite.userId, favorite.movieId)">Elimina</button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

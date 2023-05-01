@@ -8,7 +8,7 @@ import { WelcomeComponent } from "./components/welcome/welcome.component";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { RankingsComponent } from "./components/ranking-components/rankings/rankings.component";
 import { GiocaComponent } from "./components/gioca-components/gioca/gioca.component";
-import { FavoritesComponent } from "./components/favorites/favorites.component";
+import { FavoritesComponent } from "./components/favorites-components/favorites/favorites.component";
 import { RegistrationSuccessComponent } from "./@shared/components/registration-success/registration-success.component";
 import { FineGiocaComponent } from "./components/gioca-components/fine-gioca/fine-gioca.component";
 

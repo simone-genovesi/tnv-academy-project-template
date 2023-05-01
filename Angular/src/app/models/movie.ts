@@ -60,6 +60,7 @@ export interface Movie {
 
   export interface FavoriteMovie {
     userId?: number | undefined,
+    movieId?: number | undefined,
     movieTitle: string | undefined;
     posterPath: string | undefined;
     review: string | undefined;
