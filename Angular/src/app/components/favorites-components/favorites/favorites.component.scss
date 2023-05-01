@@ -1,19 +1,19 @@
 .container {
     margin-top: 100px;
     text-align: center;
-   
+
 }
 
 h2 {
-    margin-bottom: 3.5rem;
+    margin-bottom: 0px;
     text-align: center;
 }
 
-.row{
-    padding-left: 200px;
-}
 
-.card{
+.card {
     border-radius: 8px;
-  box-shadow: 0 3px 5px lightgray;
+    box-shadow: 0 3px 5px lightgray;
+}
+.row {
+    padding-top: 0;
 }
