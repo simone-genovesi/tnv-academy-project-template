@@ -7,6 +7,9 @@ const favoriteMovie = db.define('favorites', {
   userId: {
     type: DataTypes.INTEGER
   },
+  movieId: {
+    type: DataTypes.INTEGER
+  },
   movieTitle: {
     type: DataTypes.STRING
   },
