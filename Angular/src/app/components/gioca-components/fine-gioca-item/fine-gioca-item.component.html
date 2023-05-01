@@ -1,73 +1,48 @@
-<div class="container">
-  <div class="card mb-3" style="max-width: 540px">
-    <div class="row g-0">
-      <div class="col-md-3">
-        <img [src]="imageBaseUrl + movie.poster_path" class="card-img-top" />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{ movie.title | titlecase }}</h5>
-          <ng-template #content let-c="close" let-d="dismiss">
-            <div class="modal-header">
-              <h4 class="modal-title" id="modal-basic-title">
-                Inserisci la tua recensione:
-              </h4>
-              <button
-                type="button"
-                class="btn-close"
-                aria-label="Close"
-                (click)="d('Cross click')"
-              ></button>
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-3">
+      <img [src]="imageBaseUrl + movie.poster_path" class="card-img-top" />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ movie.title | titlecase }}</h5>
+        <ng-template #content let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">
+              Inserisci la tua recensione:
+            </h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <form #f="ngForm">
+                <div>
+                  <textarea id="reviewText" name="reviewText" [(ngModel)]="reviewText" maxlength="160"
+                    (input)="updateRemainingChars()"></textarea>
+                </div>
+                <div>{{ remainingChars }} characters remaining</div>
+                <label id="example-radio-group-label">Dai un voto al film</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" name="rating" [(ngModel)]="rating">
+                  <mat-radio-button class="example-radio-button" *ngFor="let rating of ratings"
+                    [value]="rating.value">
+                    {{rating.viewValue}}
+                  </mat-radio-button>
+                </mat-radio-group>
+              </form>
             </div>
-            <div class="modal-body">
-              <div>
-                <form #f="ngForm" >
-                  <div>
-                    <textarea
-                      id="reviewText"
-                      name="reviewText"
-                      [(ngModel)]="reviewText"
-                      maxlength="160"
-                      (input)="updateRemainingChars()"
-                    ></textarea>
-
-                    <label id="example-radio-group-label">Dai un voto al film</label>
-                    <mat-radio-group
-                      aria-labelledby="example-radio-group-label"
-                      name="rating"
-                      [(ngModel)]="rating">
-                      <mat-radio-button class="example-radio-button" *ngFor="let rating of ratings" [value]="rating.value">
-                        {{rating.viewValue}}
-                      </mat-radio-button>
-                    </mat-radio-group>
-                    
-                  </div>
-                  <div>{{ remainingChars }} characters remaining</div>
-                </form>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-outline-dark"
-                (click)="onSubmit(f)"
-                (click)="c('Save click')"
-              >
-                Salva
-              </button>
-            </div>
-          </ng-template>
-
-          <div class="example-button-container">
-            <button
-              type="button"
-              *ngIf="onSubmit"
-              class="form-label btn btn-primary rounded submit"
-              (click)="open(content)"
-            >
-              <mat-icon>bookmark</mat-icon>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="onSubmit(f)" (click)="c('Save click')">
+              Salva
             </button>
           </div>
+        </ng-template>
+
+        <div class="example-button-container" *ngIf="favoriteBotton" (click)="showFavoriteBotton()">
+          <button type="button" *ngIf="onSubmit" class="form-label btn btn-primary rounded submit"
+            (click)="open(content)">
+            <mat-icon>bookmark</mat-icon>
+          </button>
         </div>
       </div>
     </div>

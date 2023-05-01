@@ -1,13 +1,20 @@
 .col {
-    display: inline-block;
-    vertical-align: top;
-    width: 33.33%;
-    text-align: center;
-    padding-left: auto;
-    padding-right: auto;
- }
+   display: inline-block;
+   vertical-align: top;
+   width: 33.33%;
+   text-align: center;
+   padding-left: auto;
+   padding-right: auto;
+}
 
- .container{
-    text-align: center;
-    padding-left: auto;
- }
+.container{
+   text-align: center;
+   padding-left: auto;
+}
+
+.separator {
+  width: 950px;
+  height: 2px;
+  background-color:  #007c82;
+  margin: 0 auto;
+}

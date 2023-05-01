@@ -11,7 +11,7 @@ const router = express.Router();
 router.post(`${API_ROOT}/favorite`, createfavorite);
 router.get(`${API_ROOT}/:userId`, getfavorite);
 router.get(`${API_ROOT}/favorite/:userId`, getfavoriteByUserId);
-router.delete(`${API_ROOT}/favorite/:userId/:movieId`, deletefavorite);
+router.delete(`${API_ROOT}/deletefavorite/:id`, deletefavorite);
 
 router.post(`${API_ROOT}/ranking`, createRanking);
 router.get(`${API_ROOT}/rankingall/:userId`, getRanking);

@@ -83,8 +83,8 @@ export class MovieService {
     return this.http.post<FavoriteMovie>(`${this.nodeUrl}/favorite`, movie); 
   }
   
-  deleteFavorite(userId: number | undefined, movieId: number | undefined){
-    return this.http.delete<FavoriteMovie>(`${this.nodeUrl}/favorite/${userId}/${movieId}`); 
+  deleteFavorite(id: string | undefined){
+    return this.http.delete<FavoriteMovie>(`${this.nodeUrl}/deletefavorite/${id}`); 
   }
   
 }

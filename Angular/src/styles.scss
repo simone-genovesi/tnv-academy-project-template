@@ -48,3 +48,19 @@ ngb-rating {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Stili per dispositivi con una larghezza massima di 768px */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+}
+
+/* Stili per dispositivi con una larghezza massima di 480px */
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+    line-height: 1;
+  }
+}

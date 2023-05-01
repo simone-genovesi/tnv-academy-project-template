@@ -18,12 +18,11 @@ export const deletefavorite = async (req, res) => {
     try {
         await favoriteMovie.destroy({
             where: {
-                userId: req.params.userId,
-                movieId: req.params.movieId
+                id: req.params.id
             }
         });
         res.json({
-            "message": "Il preferuti è stato rimosso"
+            "message": "Il preferito è stato rimosso"
         });
     } catch (err) {
         console.log(err);

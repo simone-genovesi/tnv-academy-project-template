@@ -33,6 +33,8 @@ export class FineGiocaItemComponent implements OnInit {
   remainingChars: number = 160;
   rating: number | undefined;
 
+  favoriteBotton = true;
+
   imageBaseUrl: string = "https://image.tmdb.org/t/p/w500"
 
   @ViewChild('selfClosingAlert', { static: false }) selfClosingAlert: NgbAlert | undefined;
@@ -72,6 +74,12 @@ export class FineGiocaItemComponent implements OnInit {
 
   updateRemainingChars() {
     this.remainingChars = 160 - this.reviewText.length;
+  }
+
+  showFavoriteBotton() {
+
+    this.favoriteBotton = !this.favoriteBotton;
+
   }
 }
 

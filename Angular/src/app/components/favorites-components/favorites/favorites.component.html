@@ -1,8 +1,14 @@
 <div class="container">
   <h2>Lista Film Preferiti</h2>
-  <div class="row align-items-start">
-    <tnv-favorites-item *ngFor="let favorite of favorites" [favorite]="favorite" (click)="deleteFavorite(favorite.userId, favorite.movieId)">
-
-    </tnv-favorites-item>
+  <div class="d-flex justify-content-center">
+    <div class="row col-12 text-center">
+      <tnv-favorites-item 
+        *ngFor="let favorite of favorites" 
+        class="col-12 col-sm-7 col-md-2 py-2"
+        [favorite]="favorite"
+        (click)="deleteFavorite(favorite.id)"
+        style="margin: 50px;">
+      </tnv-favorites-item>
+    </div>
   </div>
 </div>
