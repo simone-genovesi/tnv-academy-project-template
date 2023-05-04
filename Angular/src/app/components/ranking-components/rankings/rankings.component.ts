@@ -15,14 +15,15 @@ export class RankingsComponent implements OnInit {
   rankings: Partial<Ranking>[] = [];
 
   ngOnInit(): void {
-
     const userId = this.authService.getCurrentUser().id;
-
+  
     this.rankingService.getRanking(userId).subscribe((res: Ranking[]) => {
       this.rankings = res;
       console.log(this.rankings);
+  
+      // Ordina l'array in base al punteggio
+      this.rankings.sort((a, b) => (b.gamePoints ?? 0) - (a.gamePoints ?? 0));
     });
   }
-
-  
+    
 }
