@@ -7,18 +7,14 @@
       <div class="card-body">
         <h5 class="card-title">{{ movie.title | titlecase }}</h5>
         <ng-template #content let-c="close" let-d="dismiss">
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">
+            <h4 class="modal-title" >
               Inserisci la tua recensione:
             </h4>
-            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-          </div>
           <div class="modal-body">
             <div>
               <form #f="ngForm">
                 <div>
-                  <textarea id="reviewText" name="reviewText" [(ngModel)]="reviewText" maxlength="160"
-                    (input)="updateRemainingChars()"></textarea>
+                  <textarea id="reviewText" name="reviewText" [(ngModel)]="reviewText" maxlength="160" (input)="updateRemainingChars()" style="width: 100%;"></textarea>
                 </div>
                 <div>{{ remainingChars }} characters remaining</div>
                 <label id="example-radio-group-label">Dai un voto al film</label>
@@ -32,7 +28,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="onSubmit(f)" (click)="c('Save click')">
+            <button type="button" class="btn btn-primary" (click)="onSubmit(f)" (click)="c('Save click')">
               Salva
             </button>
           </div>
